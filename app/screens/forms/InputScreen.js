@@ -58,27 +58,34 @@ const InputScreen = ({ route, navigation }) => {
 	}
 
 	// Change the respective state depending on which input user enters data in
-	const handleChangeInput = (e, type) => {
+	const handleChangeInput = (content, type) => {
 
 		switch (type) {
 			case 'fullName':
 				setForm({
 					...form,
-					fullName: e,
+					fullName: content,
 				})
 				break;
 
 			case 'message':
 				setForm({
 					...form,
-					message: e,
+					message: content,
 				})
 				break;
 
 			case 'userCount':
 				setForm({
 					...form,
-					userCount: e,
+					userCount: content,
+				})
+				break;
+
+			case 'dateTime':
+				setForm({
+					...form,
+					dateTime: content,
 				})
 				break;
 
@@ -144,7 +151,7 @@ const InputScreen = ({ route, navigation }) => {
 						minuteInterval={15}
 						mode={'datetime'}
 						display={'inline'}
-
+						onChange={(e, selectedDate) => handleChangeInput(selectedDate, 'dateTime')}
 					/>
 
 					<View style={styles.btnContainer} >
